@@ -1,0 +1,31 @@
+/* styles.css */
+.app-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  transition: background 1s ease-in-out; /* Smooth transition */
+}
+
+.rainy-bg {
+  background: url('rainy.jpg') no-repeat center center/cover;
+}
+
+.sunny-bg {
+  background: url('sunny.jpg') no-repeat center center/cover;
+}
+
+.cloudy-bg {
+  background: url('cloudy.jpg') no-repeat center center/cover;
+}
+
+.snowy-bg {
+  background: url('snowy.jpg') no-repeat center center/cover;
+}
+
+.default-bg {
+  background: url('default.jpg') no-repeat center center/cover;
+}
