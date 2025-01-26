@@ -4,18 +4,21 @@ import axios from "axios";
 import { WiBarometer } from "react-icons/wi";
 
 import { useEffect, useState } from "react";
+import LoaderSpinner from "./LoaderSpinner";
+
+
 
 export default function OverlayCard() {
     const today=new Date();
     const day=today.toLocaleString('en-US',{weekday:'long'});
     const date=today.toLocaleString('en-US',{year:'numeric',month:'long',day:'numeric'});
-    const time=today.toLocaleString('en-US',{hour:'2-digit',minute:'2-digit'});
+    // const time=today.toLocaleString('en-US',{hour:'2-digit',minute:'2-digit'});
     const [data,setData]=useState('')
     const [loading,setLoading]=useState(true);
     const [error,setError]=useState(null);
   
-    // const backendUrl=import.meta.env.VITE_BACKEND_URL;
-    const [backendUrl,setUrl]=useState("https://getipaddress-pbb5.onrender.com/api/mylocation")
+    const backendUrl2=import.meta.env.VITE_BACKEND_URL2;
+    const [backendUrl,setUrl]=useState(backendUrl2)
     const [searchValue, setSearchValue] = useState("");
    
      // Handle input change
@@ -73,7 +76,9 @@ export default function OverlayCard() {
 
   return (
     <div>
-    {loading?<h1>loading...</h1>:
+    {loading?<div className="flex items-center justify-center h-screen">
+        <div className="w-12 h-12 border-4  border-solid rounded-full border-t-transparent animate-spin"></div>
+      </div>:(
      
     
     <div className="bg-orange-300 flex justify-center items-center h-screen">
@@ -87,15 +92,7 @@ export default function OverlayCard() {
       muted
     ></video>
     <div className="relative z-10 mt-12  px-5 text-white  items-center ">
-        {/* <div className="flex gap-8 -mb-8  ">
-            <img className=" -ml-12 " src={`https://openweather.site/img/wn/${data.weather[0].icon}.png`}></img>
-            
-              <div className=" flex flex-col ">
-            <h1 className="text-6xl font-thin" >{data.main.temp}</h1>
-            <h1 className="text-xl py-2 font-bold">{data.weather[0].main}</h1>
-            <h1 className="text-3xl  font-bold">{data.name}</h1>
-            </div>
-        </div> */}
+    
        
         <div className="relative ">
 
@@ -127,7 +124,7 @@ export default function OverlayCard() {
             <div className="flex gap-2">
             <h1>{day}</h1>
             <h1>{date}</h1>
-            <h1>{time}</h1>
+            {/* <h1>{time}</h1> */}
           
             </div>
             <div className=" flex items-center">
@@ -135,6 +132,7 @@ export default function OverlayCard() {
             <img className=" -m-5 " src={`https://openweather.site/img/wn/${data.weather[0].icon}.png`}></img>
 
             <h2>{data.weather[0].description}</h2>
+            
             </div>
             <div className="gap-12   flex justify-center text-center">
                 
@@ -192,7 +190,8 @@ export default function OverlayCard() {
   </div>
 </div>
 
-    }  
+    )
+}  
     </div>
   )
 }

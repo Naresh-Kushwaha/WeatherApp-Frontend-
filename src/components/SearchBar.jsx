@@ -30,7 +30,7 @@ const SearchBar = () => {
       {/* Search Input */}
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="City.."
         value={searchValue}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
